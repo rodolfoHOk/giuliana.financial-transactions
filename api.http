@@ -1,0 +1,10 @@
+### Test upload CNAB file
+POST http://localhost:8080/cnab/upload HTTP/1.1
+Content-Type: multipart/form-data; boundary=Boundary
+
+--Boundary
+Content-Disposition: form-data; name="file"; filename="CNAB.txt"
+Content-Type: text/plain
+
+< ./files/CNAB.txt
+--Boundary--
