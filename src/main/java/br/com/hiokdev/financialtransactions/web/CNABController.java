@@ -1,8 +1,5 @@
 package br.com.hiokdev.financialtransactions.web;
 
-import java.io.IOException;
-
-import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,11 +20,7 @@ public class CNABController {
 
   @PostMapping("upload")
   public String upload(@RequestParam("file") MultipartFile file) {
-    try {
-      cnabService.uploadCNABFile(file);
-    } catch (IllegalStateException | IOException e) {
-      throw new HttpMessageNotWritableException(e.getMessage());
-    }
+    cnabService.uploadCNABFile(file);
     return "Init processing...";
   }
   
