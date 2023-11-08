@@ -20,15 +20,15 @@ public record Transaction(
   
   public Transaction withAmount(BigDecimal amount) {
     return new Transaction(
-      this.id,
-      this.type,
-      this.date,
+      id,
+      type,
+      date,
       amount,
-      this.cpf,
-      this.card,
-      this.time,
-      this.storeOwner,
-      this.storeName);
+      cpf,
+      card,
+      time,
+      storeOwner,
+      storeName);
   }
 
   public Transaction withDate(String date) throws ParseException {
@@ -36,15 +36,15 @@ public record Transaction(
     var dateParsed = dateFormat.parse(date);
 
     return new Transaction(
-      this.id,
-      this.type,
+      id,
+      type,
       new Date(dateParsed.getTime()),
-      this.amount,
-      this.cpf,
-      this.card,
-      this.time,
-      this.storeOwner,
-      this.storeName);
+      amount,
+      cpf,
+      card,
+      time,
+      storeOwner,
+      storeName);
   }
 
   public Transaction withTime(String time) throws ParseException {
@@ -52,15 +52,15 @@ public record Transaction(
     var timeParsed = dateFormat.parse(time);
 
     return new Transaction(
-      this.id,
-      this.type,
-      this.date,
-      this.amount,
-      this.cpf,
-      this.card,
+      id,
+      type,
+      date,
+      amount,
+      cpf,
+      card,
       new Time(timeParsed.getTime()),
-      this.storeOwner,
-      this.storeName);
+      storeOwner,
+      storeName);
   }
 
 }
