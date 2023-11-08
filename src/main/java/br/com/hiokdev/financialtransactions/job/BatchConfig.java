@@ -7,7 +7,9 @@ import javax.sql.DataSource;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
@@ -21,6 +23,7 @@ import org.springframework.batch.item.file.transform.Range;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import br.com.hiokdev.financialtransactions.domain.CNABTransaction;
@@ -123,6 +126,16 @@ public class BatchConfig {
       """)
       .beanMapped()
       .build();
+  }
+
+  @Bean
+  public JobLauncher jobLauncherAsync(JobRepository jobRepository) throws Exception {
+    var jobLauncher = new TaskExecutorJobLauncher();
+    jobLauncher.setJobRepository(jobRepository);
+    jobLauncher.setTaskExecutor(new SimpleAsyncTaskExecutor());
+    jobLauncher.afterPropertiesSet();
+    
+    return jobLauncher;
   }
 
 }
