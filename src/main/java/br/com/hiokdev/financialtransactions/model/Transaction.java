@@ -18,19 +18,6 @@ public record Transaction(
   String storeName
 ) {
   
-  public Transaction withAmount(BigDecimal amount) {
-    return new Transaction(
-      id,
-      type,
-      date,
-      amount,
-      cpf,
-      card,
-      time,
-      storeOwner,
-      storeName);
-  }
-
   public Transaction withDate(String date) throws ParseException {
     var dateFormat = new SimpleDateFormat("yyyyMMdd");
     var dateParsed = dateFormat.parse(date);

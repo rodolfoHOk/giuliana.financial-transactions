@@ -99,7 +99,7 @@ public class BatchConfig {
         null,
         item.type(),
         null,
-        null,
+        item.amount().divide(BigDecimal.valueOf(100)),
         item.cpf(),
         item.card(),
         null,
@@ -107,7 +107,6 @@ public class BatchConfig {
         item.storeName()
       )
       .withDate(item.date())
-      .withAmount(item.amount().divide(BigDecimal.valueOf(100)))
       .withTime(item.time());
 
       return transaction;
