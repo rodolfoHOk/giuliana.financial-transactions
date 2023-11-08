@@ -1,4 +1,4 @@
-package br.com.hiokdev.financialtransactions.config;
+package br.com.hiokdev.financialtransactions.job;
 
 import java.math.BigDecimal;
 
@@ -23,8 +23,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import br.com.hiokdev.financialtransactions.model.CNABTransaction;
-import br.com.hiokdev.financialtransactions.model.Transaction;
+import br.com.hiokdev.financialtransactions.domain.CNABTransaction;
+import br.com.hiokdev.financialtransactions.domain.Transaction;
 
 @Configuration
 public class BatchConfig {
