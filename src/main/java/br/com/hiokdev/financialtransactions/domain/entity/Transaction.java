@@ -1,4 +1,4 @@
-package br.com.hiokdev.financialtransactions.domain;
+package br.com.hiokdev.financialtransactions.domain.entity;
 
 import java.math.BigDecimal;
 import java.sql.Date;
