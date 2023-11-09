@@ -44,7 +44,7 @@ public class CNABService {
       .addJobParameter("cnab", file.getOriginalFilename(),
         String.class, true)
       .addJobParameter("cnabFile", "file:" + targetLocation.toString(),
-        String.class)
+        String.class, false)
       .toJobParameters();
     try {
       jobLauncher.run(job, jobParameter);
