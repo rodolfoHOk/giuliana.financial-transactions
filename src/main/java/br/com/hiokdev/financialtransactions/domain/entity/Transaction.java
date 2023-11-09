@@ -6,16 +6,21 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
+@Table(name = "TRANSACTIONS")
 public record Transaction(
-  Long id,
+  @Id Long id,
   Integer type,
   Date date,
   BigDecimal amount,
   Long cpf,
   String card,
   Time time,
-  String storeOwner,
-  String storeName
+  @Column("STORE_OWNER") String storeOwner,
+  @Column("STORE_NAME")String storeName
 ) {
   
   public Transaction withDate(String date) throws ParseException {
