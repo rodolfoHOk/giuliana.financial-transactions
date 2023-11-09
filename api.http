@@ -1,4 +1,4 @@
-### Test upload CNAB file
+### Upload CNAB file
 POST http://localhost:8080/cnab/upload HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundary
 
@@ -8,3 +8,6 @@ Content-Type: text/plain
 
 < ./files/CNAB.txt
 --Boundary--
+
+### Get transactions report
+GET http://localhost:8080/transactions
