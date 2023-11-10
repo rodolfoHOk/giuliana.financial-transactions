@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.hiokdev.financialtransactions.domain.entity.ReportTransaction;
-import br.com.hiokdev.financialtransactions.domain.entity.Transaction;
 import br.com.hiokdev.financialtransactions.domain.service.TransactionService;
 
 @RestController
@@ -21,7 +20,8 @@ public class TransactionController {
   }
 
   @GetMapping
-  public Iterable<Transaction> listAll() {
+  public List<ReportTransaction> listAll() {
     return transactionService.listTotalsTransactionByStoreName();
   }
+  
 }
