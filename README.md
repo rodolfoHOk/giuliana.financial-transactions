@@ -30,7 +30,13 @@
 - Spring Framework
 - SQL Database
 - Spring Batch
+- Testes unitários
+- Mockito
 
 ## Rodar
 
 (to do)
+
+## Links
+
+- [Vídeo: Introdução aos testes automatizados com Spring Boot](https://www.youtube.com/watch?v=N1UkkK4jIHM)
