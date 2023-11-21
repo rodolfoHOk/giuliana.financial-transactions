@@ -2,6 +2,7 @@ package br.com.hiokdev.financialtransactions.web;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class TransactionController {
   }
 
   @GetMapping
+  @CrossOrigin(origins = {"http://localhost:9090"})
   public List<ReportTransaction> listAll() {
     return transactionService.listTotalsTransactionByStoreName();
   }
