@@ -30,6 +30,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import br.com.hiokdev.financialtransactions.domain.entity.CNABTransaction;
 import br.com.hiokdev.financialtransactions.domain.entity.Transaction;
+import br.com.hiokdev.financialtransactions.domain.entity.TransactionType;
 
 @Configuration
 public class BatchConfig {
@@ -103,16 +104,21 @@ public class BatchConfig {
   @Bean
   public ItemProcessor<CNABTransaction, Transaction> processor() {
     return item -> {
+      var transactionType = TransactionType.findByType(item.type());
+      var normalizedAmount = item.amount()
+        .divide(BigDecimal.valueOf(100))
+        .multiply(transactionType.getSignal());
+
       var transaction = new Transaction(
         null,
         item.type(),
         null,
-        item.amount().divide(BigDecimal.valueOf(100)),
+        normalizedAmount,
         item.cpf(),
         item.card(),
         null,
-        item.storeOwner(),
-        item.storeName()
+        item.storeOwner().trim(),
+        item.storeName().trim()
       )
       .withDate(item.date())
       .withTime(item.time());

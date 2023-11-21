@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.hiokdev.financialtransactions.domain.entity.ReportTransaction;
 import br.com.hiokdev.financialtransactions.domain.entity.Transaction;
-import br.com.hiokdev.financialtransactions.domain.entity.TransactionType;
 import br.com.hiokdev.financialtransactions.domain.repository.TransactionRepository;
 
 @Service
@@ -29,9 +28,7 @@ public class TransactionService {
 
     transactions.forEach(transaction -> {
       String storeName = transaction.storeName();
-      var transactionType = TransactionType.findByType(transaction.type());
-      BigDecimal amount = transaction.amount()
-        .multiply(BigDecimal.valueOf(transactionType.getSignal()));
+      BigDecimal amount = transaction.amount();
 
       reportMap.compute(storeName, (key, existingReport) -> {
         var report = (existingReport != null) 

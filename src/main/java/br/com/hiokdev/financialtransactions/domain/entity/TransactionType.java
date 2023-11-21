@@ -1,5 +1,7 @@
 package br.com.hiokdev.financialtransactions.domain.entity;
 
+import java.math.BigDecimal;
+
 public enum TransactionType {
   DEBITO(1),
   BOLETO(2),
@@ -21,11 +23,11 @@ public enum TransactionType {
     return type;
   }
 
-  public int getSignal() {
+  public BigDecimal getSignal() {
     return switch(type) {
-      case 1, 4, 5, 6, 7, 8 -> 1;
-      case  2, 3, 9 -> -1;
-      default -> 0;
+      case 1, 4, 5, 6, 7, 8 -> BigDecimal.ONE;
+      case  2, 3, 9 -> BigDecimal.valueOf(-1);
+      default -> BigDecimal.ZERO;
     };
   }
 
