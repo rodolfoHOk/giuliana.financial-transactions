@@ -1,5 +1,6 @@
 package br.com.hiokdev.financialtransactions.web;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class CNABController {
   }
 
   @PostMapping("upload")
+  @CrossOrigin(origins = {"http://localhost:9090"})
   public String upload(@RequestParam("file") MultipartFile file) {
     cnabService.uploadCNABFile(file);
     return "Init processing...";
