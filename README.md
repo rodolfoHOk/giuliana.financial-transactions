@@ -35,7 +35,10 @@
 
 ## Rodar
 
-(to do)
+- requisito: java 21 instalado
+- clonar este repositório
+- ./mvnw package
+- java -jar target/financial-transactions-0.0.1-SNAPSHOT.jar
 
 ## Links
 
