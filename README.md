@@ -32,13 +32,21 @@
 - Spring Batch
 - Testes unitários
 - Mockito
+- Docker & docker compose
 
 ## Rodar
+
+### Somente esta API
 
 - requisito: java 21 instalado
 - clonar este repositório
 - ./mvnw package
 - java -jar target/financial-transactions-0.0.1-SNAPSHOT.jar
+
+### Todos projetos
+
+- requisito: docker e docker compose instalado
+- docker compose up
 
 ## Links
 
