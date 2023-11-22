@@ -48,6 +48,9 @@
 - requisito: docker e docker compose instalado
 - docker compose up
 
-## Links
+## Links úteis
 
 - [Vídeo: Introdução aos testes automatizados com Spring Boot](https://www.youtube.com/watch?v=N1UkkK4jIHM)
+
+- [Neon: Serverless Postgres](https://neon.tech/)
+- [Render: The fastest way to host all](https://render.com/)
