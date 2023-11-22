@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=transactions
+      - POSTGRES_USER=hiokdev
+      - POSTGRES_PASSWORD=password
+
+  spring-app:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - DB_HOST=postgres-db
+      - DB_PORT=5432
+      - DB_NAME=transactions
+      - DB_USER=hiokdev
+      - DB_PASSWORD=password
+    depends_on:
+      - postgres-db
+
+  spa-app:
+    build:
+      context: ../financial-frontend
+      dockerfile: Dockerfile
+    ports:
+      - 9090:9090
+    depends_on:
+      - spring-app
