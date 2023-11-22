@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table(name = "TRANSACTIONS")
+@Table(name = "transactions")
 public record Transaction(
   @Id Long id,
   Integer type,
@@ -19,8 +19,8 @@ public record Transaction(
   Long cpf,
   String card,
   Time time,
-  @Column("STORE_OWNER") String storeOwner,
-  @Column("STORE_NAME")String storeName
+  @Column("store_owner") String storeOwner,
+  @Column("store_name")String storeName
 ) {
 
   public Transaction withAmount(BigDecimal amount) {
